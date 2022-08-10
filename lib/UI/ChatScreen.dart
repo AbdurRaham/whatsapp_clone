@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
+import 'package:whatsapp_clone/UI/chatui.dart';
+
 class ChatScreen extends StatelessWidget {
-   ChatScreen({Key? key}) : super(key: key);
-  
-  List name=[
+  ChatScreen({Key? key}) : super(key: key);
+
+  List name = [
     "Akber",
     "Waseem",
     "Naveed",
@@ -13,7 +16,7 @@ class ChatScreen extends StatelessWidget {
     "Naveed",
     "Siltan",
   ];
-  List message=[
+  List message = [
     "Hi Akber How Are You ?",
     "What Are You Doing?",
     "What is The Day",
@@ -27,20 +30,29 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount:name.length ,
-        itemBuilder: (BuildContext context,i){
-        return Column(
-          children: [
-            ListTile(
-              leading: const CircleAvatar(
-                child: Icon(Icons.person),
-              ),
-              title: Text(name[i]),
-              subtitle: Text(message[i]),
-              trailing: const Text("10:33 pm",style: TextStyle(color: Colors.black),),
-            ),const Divider()
-          ],
-        );
+        itemCount: name.length,
+        itemBuilder: (BuildContext context, i) {
+          return GestureDetector(
+            onTap: () {
+              Get.to(ChatUI());
+            },
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text(name[i]),
+                  subtitle: Text(message[i]),
+                  trailing: const Text(
+                    "10:33 pm",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+                const Divider()
+              ],
+            ),
+          );
         });
   }
 }
